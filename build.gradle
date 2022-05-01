@@ -1,9 +1,19 @@
 plugins {
+    id 'maven-publish'
     id 'java'
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            // Configure the publication here
+            from components.java
+        }
+    }
+}
 
 repositories {
     mavenCentral()

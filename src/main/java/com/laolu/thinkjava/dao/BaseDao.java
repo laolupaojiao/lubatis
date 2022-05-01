@@ -181,7 +181,6 @@ public class BaseDao {
         for (Field field : fields) {
             try {
                 field.setAccessible(true);
-                // 对于每个属性，获取属性名
                 String varName = field.getName();
                 if (varName.equals("table")) {
                     table = (String) field.get(this);
@@ -194,8 +193,6 @@ public class BaseDao {
                     continue;
                 }
                 column += varName + ",";
-                // 修改访问控制权限
-                // 获取在对象f中属性fields[i]对应的对象中的变量
                 Object o = field.get(this);
                 value += "?,";
                 values.add(o);
@@ -217,7 +214,6 @@ public class BaseDao {
         for (Field field : fields) {
             try {
                 field.setAccessible(true);
-                // 对于每个属性，获取属性名
                 String varName = field.getName();
                 if (varName.equals("table")) {
                     table = (String) field.get(this);
@@ -231,8 +227,6 @@ public class BaseDao {
                     continue;
                 }
                 sets += varName + "=?,";
-                // 修改访问控制权限
-                // 获取在对象f中属性fields[i]对应的对象中的变量
                 Object o = field.get(this);
                 values.add(o);
             } catch (IllegalArgumentException | IllegalAccessException ex) {
@@ -244,7 +238,7 @@ public class BaseDao {
         sets = sets.substring(0, sets.toString().lastIndexOf(','));
         queryType = "update";
         if (pkv == null || Integer.parseInt(pkv) == -1) {
-            System.out.println("未设置主键值！");
+            System.out.println("pk not set");
         }
         return execUpdate();
     }
