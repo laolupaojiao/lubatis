@@ -28,6 +28,8 @@ new BaseDao().update("user").set(new String[][]{{"username","12345"}}).where(new
   
 三、实体类继承BaseDao
   
+  注意：@Expose(serialize = false) 是为了适配gson转json格式时，将父类BaseDao的属性也序列化返回前端
+  
   实体类可设置table属性，对应表名，不设置则默认类名的全小写为表名 例如： private String table = "user";
   实体类可设置pk属性，对应主键名，不设置默认为id  private String pk = "id";
 
