@@ -1,4 +1,4 @@
-# spring-thinkphp
+# java-mysql 链式查询
 将thinkphp对mysql的操作方式移植到spring
 
 
